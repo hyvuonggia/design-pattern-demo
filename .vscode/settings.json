@@ -1,7 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "strategy/lib",
-        "strategy/src"
+        "strategy/src",
+        "observer/src"
     ],
     "java.project.referencedLibraries": []
 }
