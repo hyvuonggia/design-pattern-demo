@@ -15,6 +15,7 @@ The Strategy pattern is one of the most widely used design patterns in software 
 1. **Strategy Interface**: Declares an interface common to all supported algorithms
 2. **Concrete Strategies**: Implement different variations of the algorithm
 3. **Context**: Maintains a reference to a Strategy object and delegates algorithm execution to it
+4. **Factory (Optional)**: Creates strategy objects based on input parameters, simplifying client code
 
 ### How It Works
 - The client chooses which strategy to use at runtime
@@ -138,12 +139,27 @@ This demonstration shows the Strategy pattern applied to a payment processing sy
   - `CreditCardPayment.java` - Processes credit card payments
   - `PaypalPayment.java` - Manages PayPal transactions
 - **Context**: `Order.java` - Uses a payment strategy to process orders
+- **Factory**: `PaymentFactory.java` - Creates payment method instances based on string input
+
+### Usage Example:
+```java
+// Create payment method using factory
+Payment payment = PaymentFactory.createPaymentMethod("creditcard");
+order.setPaymentMethod(payment);
+order.processOrder();
+
+// Switch to different payment method
+Payment cashPayment = PaymentFactory.createPaymentMethod("cash");
+order.setPaymentMethod(cashPayment);
+order.processOrder();
+```
 
 ### Key Advantages Demonstrated:
 - ✅ Easy to add new payment methods without modifying existing code
 - ✅ Clean separation of payment logic from order processing
 - ✅ Each payment method can be tested independently
 - ✅ Runtime selection of payment strategy
+- ✅ Factory simplifies strategy object creation and eliminates direct dependencies
 
 ## Best Practices
 
@@ -153,8 +169,10 @@ This demonstration shows the Strategy pattern applied to a payment processing sy
 2. **Use Dependency Injection**
    - Inject strategies rather than creating them internally
 
-3. **Consider Strategy Factory**
+3. **Consider Strategy Factory** ✅ *Implemented in this demo*
    - For complex strategy selection logic, use a factory pattern
+   - Centralizes strategy creation and reduces client code complexity
+   - Makes it easy to add new strategies without changing client code
 
 4. **Document When to Use Each Strategy**
    - Make it clear when each strategy is appropriate

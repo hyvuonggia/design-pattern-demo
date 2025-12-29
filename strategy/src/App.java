@@ -1,19 +1,21 @@
+import payment.Payment;
 
-import payment.CashPayment;
-import payment.CreditCardPayment;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Order order = new Order(100);
 
-        // Set payment method to Credit Card
-        order.setPaymentMethod(new CreditCardPayment());
+
+        Payment creditCardPayment = PaymentFactory.createPaymentMethod("creditcard");
+        order.setPaymentMethod(creditCardPayment);
         order.processOrder();
 
         System.out.println("Switching payment method...");
 
-        // Set payment method to Cash
-        order.setPaymentMethod(new CashPayment());
+
+        // Set payment method to Cash using PaymentFactory
+        Payment cashPayment = PaymentFactory.createPaymentMethod("cash");
+        order.setPaymentMethod(cashPayment);
         order.processOrder();
 
     }
