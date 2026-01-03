@@ -1,7 +1,7 @@
 import payment.Payment;
 
 
-public class App {
+public class StrategyApp {
     public static void main(String[] args) throws Exception {
         Order order = new Order(100);
 

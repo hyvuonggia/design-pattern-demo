@@ -2,7 +2,8 @@
     "java.project.sourcePaths": [
         "strategy/src",
         "observer/src",
-        "facade/src"
+        "facade/src",
+        "proxy/src"
     ],
     "java.project.referencedLibraries": []
 }
